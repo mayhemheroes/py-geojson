@@ -1,0 +1,7 @@
+project: geojson
+target: fuzz-lib
+
+cmds:
+  - cmd: /src/mayhem/fuzz_lib.py
+    libfuzzer: true
+    timeout: 6
