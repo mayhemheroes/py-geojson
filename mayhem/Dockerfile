@@ -1,5 +1,14 @@
 # Build Stage
-FROM fuzzers/atheris:2.0.7-python3.9
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    clang \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV CC=clang CXX=clang++
+
+RUN pip install --no-cache-dir atheris
 
 ADD . /src
 WORKDIR /src
